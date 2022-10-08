@@ -31,4 +31,5 @@ For crkbd: options (tapping terms, etc), layers (symbols specifically), resolder
 
 ## Documentation
 
+* [Official repo](https://github.com/qmk/qmk_firmware)
 * [See the official documentation on docs.qmk.fm](https://docs.qmk.fm)
