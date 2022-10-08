@@ -10,7 +10,7 @@ This is a fork of QMK official repos that I use for my own keyboards and keymaps
 
 ## Keymaps
 
-* [Corne colemak](/keyboards/crkbd/BouleJaune)
+* [Corne colemak](/keyboards/crkbd/keymaps/BouleJaune)
 
 ## How to compile and flash
 
@@ -24,10 +24,10 @@ qmk flash -kb crkbd -km BouleJaune -bl avrdude
 ## To do
 
 Script to dynamically create images for the layout
-Add Shoc board to qmk
-Add first custom pcb custom board to qmk
-For crkbd: 
-options (tapping terms, etc), layers (symbols specifically), resolder leds and screen, add new layers to screen...
+
+Add Shoc board, and first custom pcb custom board to qmk
+
+For crkbd: options (tapping terms, etc), layers (symbols specifically), resolder leds and screen, add new layers to screen...
 
 ## Documentation
 
