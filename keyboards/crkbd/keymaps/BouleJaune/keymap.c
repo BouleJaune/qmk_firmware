@@ -31,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESC,    KC_Q,    MT(MOD_LALT, KC_R),    MT(MOD_LCTL, KC_S),    MT(MOD_LSFT, KC_T),   KC_D,                         
        KC_H,    MT(MOD_RSFT, KC_N),    MT(MOD_RCTL, KC_E),    MT(MOD_LALT, KC_I),  KC_O,  KC_4,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_ESC,    KC_W,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_SCLN, KC_COMM,  MT(MOD_RALT, KC_DOT), KC_SLSH,  KC_3,
+      LCTL(KC_B),    KC_W,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_SCLN, KC_COMM,  MT(MOD_RALT, KC_DOT), KC_SLSH,  KC_3,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                            KC_LGUI,   LT(1, KC_TAB),  KC_SPC,            LT(4, KC_BSPC),   LT(2, KC_ENT), LT(5, KC_DEL)
                                       //`--------------------------'  `--------------------------'
@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_LCTL,  KC_Q,    KC_DLR,    KC_PERC,    KC_CIRC,   KC_EQL,
                                                      KC_MINS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,  KC_GRV,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, LSFT(KC_NUBS), KC_EXLM, KC_AT, KC_HASH, KC_NUBS,                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
+      KC_LSFT, KC_NUBS, KC_EXLM, KC_AT, KC_HASH, LSFT(KC_NUBS),                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           LSFT(KC_COMM),   KC_RPRN,  KC_6,     KC_BSPC, _______, KC_ENT
                                       //`--------------------------'  `-------------------c-------'
@@ -80,12 +80,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // symboles layer
   [4] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       KC_TAB, RALT(KC_4),   KC_1, KC_BSLS,  KC_LPRN, RALT(KC_EQL),                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_ENT,
+       KC_TAB, KC_RBRC,   KC_1, KC_BSLS,  KC_LPRN, KC_LBRC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_ENT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LCTL,  KC_COMMA,    KC_RBRC,    LSFT(KC_QUOT),    KC_LBRC,   KC_PLUS,
+      KC_LCTL,  KC_COMMA,    RALT(KC_4),    LSFT(KC_QUOT),    RALT(KC_EQL),   KC_PLUS,
                                                      KC_MINS,  KC_EQL, KC_LBRC, KC_RBRC, KC_BSLS,  KC_GRV,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, RALT(KC_2), KC_SLSH, RALT(KC_0), RALT(KC_3), ALGR(KC_6),                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
+      LCTL(KC_B), RALT(KC_2), KC_SLSH, RALT(KC_0), RALT(KC_3), ALGR(KC_6),                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_5,   KC_MINS,  KC_8,     KC_BSPC, _______, KC_ENT
                                       //`--------------------------'  `-------------------c-------'
