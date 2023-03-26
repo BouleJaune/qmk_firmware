@@ -17,9 +17,9 @@ This is a fork of QMK official repos that I use for my own keyboards and keymaps
 Elite-C board use dfu bootloader and pro-micro uses caterina, so the commands varies if you have different boards for each half like I do.
 
 For Elite-C :
-qmk flash -kb crkbd -km BouleJaune -bl dfu
+``qmk flash -kb crkbd -km BouleJaune -bl dfu``
 For Pro-micro :
-qmk flash -kb crkbd -km BouleJaune -bl avrdude
+``qmk flash -kb crkbd -km BouleJaune -bl avrdude``
 
 ## To do
 

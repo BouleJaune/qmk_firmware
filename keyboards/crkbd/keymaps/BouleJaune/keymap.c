@@ -18,8 +18,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 #include <stdio.h>
+// Tap Dance declarations
+enum {
+    TD_H_ESC,
+};
 
+// Tap Dance definitions
+tap_dance_action_t tap_dance_actions[] = {
+    // Tap once for Escape, twice for Caps Lock
+    [TD_H_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_H, KC_ESC),
+};
 
+const uint16_t PROGMEM test_combo1[] = {KC_A, KC_B, COMBO_END};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -28,10 +38,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,----------------------------------------------------.                    ,-----------------------------------------------------.
     LSFT(KC_DOT),   KC_A,    KC_Z,    KC_F,    KC_P,    KC_G,                         KC_J,    KC_L,    KC_U,    KC_Y,   KC_M,  ALGR(KC_6),
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_ESC,    KC_Q,    MT(MOD_LALT, KC_R),    MT(MOD_LCTL, KC_S),    MT(MOD_LSFT, KC_T),   KC_D,                         
-       KC_H,    MT(MOD_RSFT, KC_N),    MT(MOD_RCTL, KC_E),    MT(MOD_LALT, KC_I),  KC_O,  KC_4,
+      KC_ESC,    MT(MOD_LGUI, KC_Q),    MT(MOD_LALT, KC_R),    MT(MOD_LCTL, KC_S),    MT(MOD_LSFT, KC_T),   KC_D,                         
+       KC_H,    MT(MOD_RSFT, KC_N),    MT(MOD_RCTL, KC_E),    MT(MOD_LALT, KC_I),  MT(MOD_LGUI, KC_O),  KC_4,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      LCTL(KC_B),    KC_W,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_SCLN, KC_COMM,  MT(MOD_RALT, KC_DOT), KC_SLSH,  KC_3,
+      LCTL(KC_B),    KC_W,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_SCLN, KC_COMM,  KC_DOT, KC_SLSH,  KC_3,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                            KC_LGUI,   LT(1, KC_TAB),  KC_SPC,            LT(4, KC_BSPC),   LT(2, KC_ENT), LT(5, KC_DEL)
                                       //`--------------------------'  `--------------------------'
@@ -44,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_LCTL, MT(MOD_LGUI, KC_Q),    MT(MOD_LALT, KC_R),    MT(MOD_LCTL, KC_S),    MT(MOD_LSFT, KC_T),    XXXXXXX,  XXXXXXX,
                                  KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      KC_LSFT, ALGR(KC_7), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, ALGR(KC_7), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LGUI, _______,  KC_SPC,     KC_BSPC, XXXXXXX, KC_ENT
                                       //`--------------------------'  `--------------------------'
@@ -106,6 +116,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `-------------------c-------'
   )
 };
+
+//Custom callback for caps words because colemak on software azerty
+bool caps_word_press_user(uint16_t keycode) {
+    switch (keycode) {
+        // Keycodes that continue Caps Word, with shift applied.
+        case KC_A ... KC_Z:
+        case KC_MINS:
+        case KC_SCLN:
+            add_weak_mods(MOD_BIT(KC_LSFT));  // Apply shift to next key.
+            return true;
+
+        // Keycodes that continue Caps Word, without shifting.
+        case KC_1 ... KC_0:
+        case KC_BSPC:
+        case KC_DEL:
+        case KC_UNDS:
+            return true;
+
+        default:
+            return false;  // Deactivate Caps Word.
+    }
+}
+
+//const uint16_t PROGMEM esc_combo[] = {KC_A, KC_B, COMBO_END};
+
+
 
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
@@ -211,3 +247,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 #endif // OLED_ENABLE
+// 
