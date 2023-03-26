@@ -18,6 +18,7 @@ Elite-C board use dfu bootloader and pro-micro uses caterina, so the commands va
 
 For Elite-C :
 ``qmk flash -kb crkbd -km BouleJaune -bl dfu``
+
 For Pro-micro :
 ``qmk flash -kb crkbd -km BouleJaune -bl avrdude``
 
