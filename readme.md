@@ -24,6 +24,14 @@ For Pro-micro :
 
 ## To do
 
+Change tapping term for layers
+    
+Change ' " and : / ! . 
+
+" as shifted ' 
+
+/ not in shifted . neither 
+
 Script to dynamically create images for the layout
 
 Add Shoc board, and first custom pcb custom board to qmk

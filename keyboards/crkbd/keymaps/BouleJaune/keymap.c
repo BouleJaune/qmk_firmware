@@ -16,20 +16,63 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "keycodes.h"
 #include QMK_KEYBOARD_H
 #include <stdio.h>
-// Tap Dance declarations
-enum {
-    TD_H_ESC,
+
+enum custom_keycodes {
+    REV_S_DOT = SAFE_RANGE,
+    REV_S_COMM,
+    REV_S_SLSH,
 };
 
-// Tap Dance definitions
-tap_dance_action_t tap_dance_actions[] = {
-    // Tap once for Escape, twice for Caps Lock
-    [TD_H_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_H, KC_ESC),
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+
+    case REV_S_COMM:
+        if (record->event.pressed) {
+            if (get_mods() && MOD_BIT(KC_LSFT)) {
+                unregister_code(KC_LSFT);
+                register_code(KC_SLSH);
+                unregister_code(KC_SLSH);
+                register_code(KC_LSFT);
+                return false;
+            } else {
+                register_code(KC_LSFT);
+                register_code(KC_COMM);
+                unregister_code(KC_COMM);
+                unregister_code(KC_LSFT);
+                return false;
+            }
+        }
+
+        break;
+    
+    case REV_S_SLSH:
+        if (record->event.pressed) {
+            register_code(KC_COMM);
+            unregister_code(KC_COMM);
+            return false;
+        }
+        break;
+
+    case REV_S_DOT:
+        if (record->event.pressed) {
+            register_code(KC_DOT);
+            unregister_code(KC_DOT);
+            return false;
+        }
+        break;
+    }
+
+    return true;
 };
 
-const uint16_t PROGMEM test_combo1[] = {KC_A, KC_B, COMBO_END};
+const uint16_t PROGMEM test_combo1[] = {REV_S_COMM,  KC_SCLN, COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {
+    COMBO(test_combo1, KC_ESC),
+};
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -41,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESC,    MT(MOD_LGUI, KC_Q),    MT(MOD_LALT, KC_R),    MT(MOD_LCTL, KC_S),    MT(MOD_LSFT, KC_T),   KC_D,                         
        KC_H,    MT(MOD_RSFT, KC_N),    MT(MOD_RCTL, KC_E),    MT(MOD_LALT, KC_I),  MT(MOD_LGUI, KC_O),  KC_4,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      LCTL(KC_B),    KC_W,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_SCLN, KC_COMM,  KC_DOT, KC_SLSH,  KC_3,
+      LCTL(KC_B),    KC_W,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_SCLN, REV_S_COMM,  REV_S_DOT, REV_S_SLSH,  KC_3,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                            KC_LGUI,   LT(1, KC_TAB),  KC_SPC,            LT(4, KC_BSPC),   LT(2, KC_ENT), LT(5, KC_DEL)
                                       //`--------------------------'  `--------------------------'
