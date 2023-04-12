@@ -51,7 +51,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
 #define OLED_BRIGHTNESS 10
-#define TAPPING_TERM 180   
-#define IGNORE_MOD_TAP_INTERRUPT 
-#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+#define TAPPING_TERM 180
+#define IGNORE_MOD_TAP_INTERRUPT
+// #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 #define COMBO_COUNT 1

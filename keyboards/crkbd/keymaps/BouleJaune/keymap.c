@@ -17,6 +17,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "keycodes.h"
+#include "quantum_keycodes.h"
 #include QMK_KEYBOARD_H
 #include <stdio.h>
 
@@ -97,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_LCTL, MT(MOD_LGUI, KC_Q),    MT(MOD_LALT, KC_R),    MT(MOD_LCTL, KC_S),    MT(MOD_LSFT, KC_T),    XXXXXXX,  XXXXXXX,
                                  KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, ALGR(KC_7), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, ALGR(KC_7), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      KC_LSFT, ALGR(KC_7), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, ALGR(KC_7), ALGR(KC_8), XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LGUI, _______,  KC_SPC,     KC_BSPC, XXXXXXX, KC_ENT
                                       //`--------------------------'  `--------------------------'
