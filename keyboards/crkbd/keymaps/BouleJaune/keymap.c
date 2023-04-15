@@ -48,7 +48,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
 
         break;
-    
+
     case REV_S_SLSH:
         if (record->event.pressed) {
             register_code(KC_COMM);
@@ -82,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,----------------------------------------------------.                    ,-----------------------------------------------------.
     LSFT(KC_DOT),   KC_A,    KC_Z,    KC_F,    KC_P,    KC_G,                         KC_J,    KC_L,    KC_U,    KC_Y,   KC_M,  ALGR(KC_6),
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_ESC,    MT(MOD_LGUI, KC_Q),    MT(MOD_LALT, KC_R),    MT(MOD_LCTL, KC_S),    MT(MOD_LSFT, KC_T),   KC_D,                         
+      KC_ESC,    MT(MOD_LGUI, KC_Q),    MT(MOD_LALT, KC_R),    MT(MOD_LCTL, KC_S),    MT(MOD_LSFT, KC_T),   KC_D,
        KC_H,    MT(MOD_RSFT, KC_N),    MT(MOD_RCTL, KC_E),    MT(MOD_LALT, KC_I),  MT(MOD_LGUI, KC_O),  KC_4,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       LCTL(KC_B),    KC_W,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_SCLN, REV_S_COMM,  REV_S_DOT, REV_S_SLSH,  KC_3,
@@ -291,4 +291,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 #endif // OLED_ENABLE
-// 
+//

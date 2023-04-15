@@ -1,3 +1,2 @@
 # This file intentionally left blank
-SERIAL_DRIVER = bitbang
-SPLIT_KEYBOARD = yes
+SERIAL_DRIVER = vendor
