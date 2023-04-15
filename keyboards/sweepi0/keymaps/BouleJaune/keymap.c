@@ -7,7 +7,7 @@
 #include <stdio.h>
 
 enum custom_keycodes {
-    REV_S_DOT,
+    REV_S_DOT = QK_USER,
     REV_S_COMM,
     REV_S_SLSH,
 };
