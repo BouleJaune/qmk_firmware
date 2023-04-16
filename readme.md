@@ -16,11 +16,20 @@ This is a fork of QMK official repos that I use for my own keyboards and keymaps
 
 Elite-C board use dfu bootloader and pro-micro uses caterina, so the commands varies if you have different boards for each half like I do.
 
+For the corne :
 For Elite-C :
 ``qmk flash -kb crkbd -km BouleJaune -bl dfu``
 
 For Pro-micro :
 ``qmk flash -kb crkbd -km BouleJaune -bl avrdude``
+
+For the sweepi0 (sweep with rp2040 zero) : 
+``qmk compile -kb sweepi0 -km BouleJaune -j 20 -e MAKECMDGOALS=uf2-split-left``
+then
+``sudo mount -L RPI-RP2 ~/Documents/RPI-RP2; sudo cp sweepi0_BouleJaune.uf2 ../RPI-RP2``
+
+For the right half just change the end of the command :
+``qmk compile -kb sweepi0 -km BouleJaune -j 20 -e MAKECMDGOALS=uf2-split-right``
 
 ## To do
 

@@ -8,4 +8,4 @@
 
 #define TAPPING_TERM 180
 #define IGNORE_MOD_TAP_INTERRUPT
-#define COMBO_COUNT 1
+#define COMBO_COUNT 4
