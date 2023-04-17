@@ -1,6 +1,7 @@
 // Copyright 2023 QMK
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+#include "action_code.h"
 #include QMK_KEYBOARD_H
 #include "keycodes.h"
 #include "quantum_keycodes.h"
@@ -54,16 +55,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 const uint16_t PROGMEM tab[] = {REV_S_COMM,  KC_SCLN, COMBO_END};
 // const uint16_t PROGMEM bsp[] = {KC_J,  KC_H, COMBO_END};
 const uint16_t PROGMEM ent[] = {KC_X,  KC_C, COMBO_END};
-const uint16_t PROGMEM quote[] = {KC_J,  KC_H, COMBO_END};
-const uint16_t PROGMEM doublequote[] = {KC_J,  KC_H, COMBO_END};
+// const uint16_t PROGMEM quote[] = {KC_J,  KC_H, COMBO_END};
+// const uint16_t PROGMEM doublequote[] = {KC_J,  KC_H, COMBO_END};
 const uint16_t PROGMEM esc[] = {REV_S_COMM, REV_S_DOT, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(tab, KC_TAB),
     // COMBO(bsp, KC_BSPC),
     COMBO(ent, KC_ENT),
-    COMBO(quote, KC_4),
-    COMBO(doublequote, KC_3),
+    // COMBO(quote, KC_4),
+    // COMBO(doublequote, KC_3),
     COMBO(esc, KC_ESC),
 };
 
@@ -75,17 +76,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         MT(MOD_LGUI, KC_Q),    MT(MOD_LALT, KC_R),    MT(MOD_LCTL, KC_S),    MT(MOD_LSFT, KC_T),   KC_D,
        KC_H,    MT(MOD_RSFT, KC_N),    MT(MOD_RCTL, KC_E),    MT(MOD_LALT, KC_I),  MT(MOD_LGUI, KC_O),
         KC_W,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_K,    KC_SCLN, REV_S_COMM,  REV_S_DOT, REV_S_SLSH,
-                              MO(1),  KC_SPC,            LT(4, KC_BSPC),   MO(2)
+                              MO(1),  KC_SPC,            LT(4, KC_BSPC),   LT(2, KC_ENT)
 
 // LT(2, KC_ENT)
 // LT(1, KC_ESC)
 //   nav layer
   ), [1] = LAYOUT_split_3x5_2(
            KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_QUOT,    KC_9,    KC_0,
-           KC_Q,    KC_5,    KC_PERC,    KC_MINS,   KC_EQL,
+           KC_Q,    KC_5,    MT(MOD_LCTL, KC_PERC),    KC_MINS,   KC_EQL,
                                  KC_ESC, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT,
       ALGR(KC_7), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, ALGR(KC_7), ALGR(KC_8), KC_4, KC_3,
-                                           _______,  KC_SPC,     KC_BSPC, XXXXXXX
+                                           _______,  KC_SPC,     KC_BSPC, KC_ENT
   ),
 
 //   num layer
