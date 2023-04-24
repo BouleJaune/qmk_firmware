@@ -17,7 +17,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
     case REV_S_COMM:
         if (record->event.pressed) {
-            if (get_mods() && MOD_BIT(KC_LSFT)) {
+            if (get_mods() & MOD_BIT(KC_LSFT)) {
                 unregister_code(KC_LSFT);
                 register_code(KC_SLSH);
                 unregister_code(KC_SLSH);
