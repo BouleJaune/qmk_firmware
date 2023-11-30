@@ -58,10 +58,11 @@ const uint16_t PROGMEM ent[] = {KC_X,  KC_C, COMBO_END};
 // const uint16_t PROGMEM quote[] = {KC_J,  KC_H, COMBO_END};
 // const uint16_t PROGMEM doublequote[] = {KC_J,  KC_H, COMBO_END};
 const uint16_t PROGMEM esc[] = {REV_S_COMM, REV_S_DOT, COMBO_END};
+const uint16_t PROGMEM e_aigu[] = {KC_D, KC_G, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(tab, KC_TAB),
-    // COMBO(bsp, KC_BSPC),
+    COMBO(e_aigu, KC_2),
     COMBO(ent, KC_ENT),
     // COMBO(quote, KC_4),
     // COMBO(doublequote, KC_3),
@@ -82,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // LT(1, KC_ESC)
 //   nav layer
   ), [1] = LAYOUT_split_3x5_2(
-           KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_QUOT,    KC_9,    KC_0,
+           KC_1,    XXXXXXX,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_QUOT,    KC_9,    KC_0,
            KC_Q,    KC_5,    MT(MOD_LCTL, KC_PERC),    KC_MINS,   KC_EQL,
                                  KC_ESC, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT,
       ALGR(KC_7), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, ALGR(KC_7), ALGR(KC_8), KC_4, KC_3,
@@ -92,8 +93,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //   num layer
   [2] = LAYOUT_split_3x5_2(
        RALT(KC_5),   KC_AMPR, KC_ASTR,  KC_LPRN, RALT(KC_MINS),                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,
-        KC_Q,    KC_DLR,    KC_PERC,    KC_CIRC,   KC_EQL,
-                                 KC_ESC, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT,
+        CW_TOGG,    KC_DLR,    KC_PERC,    KC_CIRC,   KC_EQL,
+                                 KC_ESC, KC_LEFT, KC_DOWN, KC_UP, TG(3),
        KC_NUBS, KC_EXLM, KC_AT, KC_HASH, LSFT(KC_NUBS),                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,
                                              KC_RPRN,  KC_6,     KC_BSPC, _______
   ),
@@ -101,9 +102,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //   gaming layer
   [3] = LAYOUT_split_3x5_2(
            KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,
-          KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,
+          KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, TG(3),
           KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,
-                                              TG(3),  KC_6,     KC_BSPC,   MO(2)
+                                              KC_LCTL,  KC_SPC,     KC_BSPC,   KC_ENT
   ),
 
   // symboles layer
