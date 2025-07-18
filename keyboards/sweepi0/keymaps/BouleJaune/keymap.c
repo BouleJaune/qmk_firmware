@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // LT(1, KC_ESC)
 //   nav layer
   ), [1] = LAYOUT_split_3x5_2(
-           KC_1,    XXXXXXX,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_QUOT,    KC_9,    KC_0,
+           KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_QUOT,    KC_9,    KC_0,
            KC_Q,    KC_5,    MT(MOD_LCTL, KC_PERC),    KC_MINS,   KC_EQL,
                                  KC_ESC, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT,
       ALGR(KC_7), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, ALGR(KC_7), ALGR(KC_8), KC_4, KC_3,
